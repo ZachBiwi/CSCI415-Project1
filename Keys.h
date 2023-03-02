@@ -7,22 +7,28 @@
 *   ©2023
 ***************************************************************************************/
 
-#ifndef Keys
-#define Keys
+#ifndef KEYS_H
+#define KEYS_H
 
-#include "Keys.cpp"
+#include <iostream>
+#include <utility>
+#include <tuple>
+#include <math.h>
+#include <string>
 
 using namespace std;
 
 class Keys {
 private:
-    int pubKey, privKey, n;
+    int n, e, d;
 public:
 
-    Keys();
-    Keys(string s);
-    string encrypt(int n, string msg);
-    string decrypt(int n);
+    Keys(int, int, int);
+   // Keys(string, string);
+
+    inline pair<int,int> getPublic() { return make_pair(e, n); };
+    inline pair<int,int> getPrivate() { return make_pair(d, n); };
+    void saveToDisk(string dest);
 
 };
 
