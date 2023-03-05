@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Keys::Keys(int n1, int e1, int d1){
+Keys::Keys(BigInt n1, BigInt e1, BigInt d1){
     n = n1;
     e = e1;
     d = d1;

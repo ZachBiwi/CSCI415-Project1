@@ -15,19 +15,20 @@
 #include <tuple>
 #include <math.h>
 #include <string>
+#include "BigInt.h";
 
 using namespace std;
 
 class Keys {
 private:
-    int n, e, d;
+    BigInt n, e, d;
 public:
 
-    Keys(int, int, int);
+    Keys(BigInt, BigInt, BigInt);
    // Keys(string, string);
 
-    inline pair<int,int> getPublic() { return make_pair(e, n); };
-    inline pair<int,int> getPrivate() { return make_pair(d, n); };
+    inline pair<BigInt,BigInt> getPublic() { return make_pair(e, n); };
+    inline pair<BigInt,BigInt> getPrivate() { return make_pair(d, n); };
     void saveToDisk(string dest);
 
 };

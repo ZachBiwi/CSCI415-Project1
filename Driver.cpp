@@ -4,11 +4,11 @@
 #include "GenerateKeyTest.h"
 #include "Keys.h"
 #include "RSA.cpp"
+#include "BigInt.h"
 
 using namespace std;
 
 int main() {
-
     GenerateKeyTest keyGen;
 
     Keys keyPair = keyGen.getNewKeypair();
