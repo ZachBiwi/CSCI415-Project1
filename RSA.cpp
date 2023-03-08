@@ -18,6 +18,7 @@
 
 using namespace std;
 
+/*
 static BigInt txtToNum(string msg){
     string translation = "";
     for (int i = 0; i < msg.length(); i++){
@@ -26,6 +27,7 @@ static BigInt txtToNum(string msg){
     }
     return BigInt(translation);
 }
+*/
 
 static string numToTxt(BigInt msg){
     string numString = msg.getDigits();
@@ -42,7 +44,12 @@ static string numToTxt(BigInt msg){
 }
 
 static string encrypt(string msg, pair<BigInt,BigInt> pubKey) {
-    BigInt bigMsg = txtToNum(msg);
+    string translation = "";
+    for (int i = 0; i < msg.length(); i++){
+        int temp = (int)msg[i] - '0';
+        translation = translation + to_string(temp);
+    }
+    BigInt bigMsg = BigInt(translation);
     BigInt bigCipherTxt = ((bigMsg ^ pubKey.second) % pubKey.first);
     return bigCipherTxt.getDigits();
 }
@@ -52,6 +59,5 @@ static string decrypt(string msg, pair<BigInt,BigInt> privKey) {
     BigInt bigPlainTxt = ((bigMsg ^ privKey.first) % privKey.second);
     return numToTxt(bigPlainTxt);
 }
-
 
 #endif
