@@ -97,7 +97,7 @@ BigInt::BigInt(unsigned long long nr){
 }
 BigInt::BigInt(const char *s){
 	digits = "";
-	for (int i = strlen(s) - 1; i >= 0;i--)
+	for (int i = (sizeof(s)/sizeof(char)) - 1; i >= 0;i--)
 	{
 		if(!isdigit(s[i]))
 			throw("ERROR");

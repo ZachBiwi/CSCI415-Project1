@@ -54,6 +54,4 @@ static string decrypt(string msg, pair<BigInt,BigInt> privKey) {
 }
 
 
-
-
 #endif
