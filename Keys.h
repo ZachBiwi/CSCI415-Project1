@@ -12,25 +12,24 @@
 
 #include <iostream>
 #include <utility>
-#include <tuple>
 #include <math.h>
 #include <string>
-#include "BigInt.h";
+#include "SuperInt.h"
 
 using namespace std;
 
 class Keys {
 private:
-    BigInt n, e, d;
+    SuperInt n, e, d;
 public:
 
-    Keys(BigInt, BigInt, BigInt);
+    Keys(SuperInt, SuperInt, SuperInt);
    // Keys(string, string);
 
-    inline pair<BigInt,BigInt> getPublic() { return make_pair(e, n); };
-    inline pair<BigInt,BigInt> getPrivate() { return make_pair(d, n); };
+    inline SuperInt getEncrypt()    {return e;};
+    inline SuperInt getDecrypt()    {return d;};
+    inline SuperInt getModulator()  {return n;};
     void saveToDisk(string dest);
-
 };
 
 #endif
