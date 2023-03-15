@@ -2,9 +2,9 @@
 *   Keys.h
 *
 *   Authors: Nathan O'Connor, Zachary Sawicki, Joseph Hoversten, Jacob Haapoja
-*   Class: CSCI 415   
+*   Class: CSCI 415
 *
-*   Â©2023
+*   ©2023
 ***************************************************************************************/
 
 #ifndef KEYS_H
@@ -14,21 +14,20 @@
 #include <utility>
 #include <math.h>
 #include <string>
-#include "SuperInt.h"
+#include "InfInt.h"
 
 using namespace std;
 
 class Keys {
 private:
-    SuperInt n, e, d;
+    InfInt n, e, d;
 public:
 
-    Keys(SuperInt, SuperInt, SuperInt);
-   // Keys(string, string);
+    Keys(InfInt, InfInt, InfInt);
 
-    inline SuperInt getEncrypt()    {return e;};
-    inline SuperInt getDecrypt()    {return d;};
-    inline SuperInt getModulator()  {return n;};
+    inline InfInt getEncrypt() { return e; };
+    inline InfInt getDecrypt() { return d; };
+    inline InfInt getModulator() { return n; };
     void saveToDisk(string dest);
 };
 

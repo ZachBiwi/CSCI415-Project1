@@ -2,9 +2,9 @@
 *   RSA.cpp
 *
 *   Authors: Nathan O'Connor, Zachary Sawicki, Joseph Hoversten, Jacob Haapoja
-*   Class: CSCI 415   
+*   Class: CSCI 415
 *
-*   Â©2023
+*   ©2023
 ***************************************************************************************/
 #ifndef RSA_H
 #define RSA_H
@@ -14,27 +14,22 @@
 #include <tuple>
 #include <math.h>
 #include <string>
-#include "SuperInt.h"
+#include <vector>
+#include "InfInt.h"
 
 using namespace std;
 
-class RSA{
+class RSA {
 public:
-    RSA(){};
-    /*
-    static SuperInt txtToNum(string msg){
-        string translation = "";
-        for (int i = 0; i < msg.length(); i++){
-            int temp = (int)msg[i] - '0';
-            translation = translation + to_string(temp);
-        }
-        return SuperInt(translation);
-    }
-    */
-    string numToTxt(SuperInt);
+    RSA() {};
 
-    string encrypt(string, SuperInt encrypt, SuperInt modulator);
+    string numToTxt(InfInt);
 
-    string decrypt(string msg, SuperInt decrypt, SuperInt modulator);
+    string encrypt(string, InfInt encrypt, InfInt modulator);
+
+    string decrypt(string msg, InfInt decrypt, InfInt modulator);
+
+    InfInt pow(InfInt, InfInt, InfInt);
+
 };
 #endif
