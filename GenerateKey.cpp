@@ -12,7 +12,11 @@
 using namespace std;
 
 GenerateKey::GenerateKey() {
+    keyLength = 100;
+}
 
+GenerateKey::GenerateKey(int length) {
+    keyLength = length;
 }
 
 /**
@@ -22,31 +26,25 @@ GenerateKey::GenerateKey() {
 * @pre Accepts a number to to compute the mod inverse on and the modulo
 * @post Returns the modular inverse of a
 */
-InfInt GenerateKey::modInverse(InfInt a, InfInt mod)
-{
+InfInt GenerateKey::modInverse(InfInt a, InfInt mod){
     InfInt infMod = mod;
     InfInt y = 0, x = 1;
 
     if (mod == 1) {
         return 0;
     }
-
     while (a > 1) {
         InfInt q = a / mod;
         InfInt t = mod;
-
         mod = a % mod;
         a = t;
-
         t = y;
         y = x - q * y;
         x = t;
     }
-
     if (x < 0) {
         x += infMod;
     }
-
     return x;
 }
 
@@ -134,7 +132,7 @@ InfInt GenerateKey::powModN(InfInt base, InfInt expo, InfInt mod) {
 /**
 * @brief Determines gcd of two values
 * @param x first value to find the gcd for
-* @parma y first value to find the gcd for
+* @param y first value to find the gcd for
 * @pre Accepts two values to find the gcd for
 * @post Returns the gcd of x and y
 */
@@ -155,7 +153,7 @@ InfInt GenerateKey::makeSuperPrime() {
     srand(time(0));         //seed
     while (!primeFlag) { // primefalg
         bInt = "";
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < keyLength; i++) {
             bInt = bInt + to_string(rand() % 10);
         }
         primeFlag = isPrime(InfInt(bInt), 5);
@@ -169,17 +167,20 @@ InfInt GenerateKey::makeSuperPrime() {
 */
 Keys GenerateKey::getNewKeypair() {
 
-    InfInt p, q, n, e, d, lambdaN;
+    InfInt p,q, n, e, d, lambdaN;
+    bool done = false;
 
-
-    while(gcd(e, lambdaN) != 1){
-        p = makeSuperPrime();
+    p = makeSuperPrime();
+    while(!done){
         q = makeSuperPrime();
         lambdaN = (p - 1) * (q - 1);
         e = 65537;
+
+        if (p != q && gcd(e, lambdaN) == 1) {
+            done = true;
+        }
         
     }
-
     n = p * q;  
     d = modInverse(e, lambdaN);
     return Keys(n, e, d);

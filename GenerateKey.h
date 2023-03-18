@@ -38,9 +38,11 @@ private:
     InfInt powModN(InfInt, InfInt, InfInt);
     InfInt makeSuperPrime();
     InfInt modInverse(InfInt, InfInt);
+    int keyLength;
 
 public:
     GenerateKey();
+    GenerateKey(int);
 
     Keys getNewKeypair();
 
